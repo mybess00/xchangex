@@ -49,7 +49,7 @@ export default function SelectCurrency ({ title, aRef = null, eventChange } : Se
       <select value={selectedValue} ref={aRef} onChange={handleCurrencySelect}>
         <option value='placeholder' disabled>Select a currency</option>
         {Object.entries(CURRENCIES).map(([key, value]) => {
-          return  <option value={key}>{value}</option>
+          return  <option value={key} key={key}>{value}</option>
         })}
       </select>
     </div>
