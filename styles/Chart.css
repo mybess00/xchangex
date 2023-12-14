@@ -1,0 +1,19 @@
+.ct-chart {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    background-color: white;
+    padding: 2rem 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgb(149, 53, 228, 0.25);
+}
+
+@media (max-width: 720px) {
+    .ct-chart {
+        padding: 1rem .8rem;
+        margin-top: 2rem;
+    }
+    .ct-chart-title > .ct-selectcurrency {
+        margin-top: .4rem;
+    }
+}

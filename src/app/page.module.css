@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
+  padding: 5rem;
   min-height: 100vh;
 }
 
@@ -202,6 +202,12 @@
   }
 }
 
+.ctparent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
@@ -225,5 +231,22 @@
   }
   to {
     transform: rotate(0deg);
+  }
+}
+
+@media (min-width:721px) and (max-width:1024px) {
+  .main {
+    padding: 7rem 1rem;
+  }
+}
+
+@media (max-width:720px) {
+  .main {
+    padding: 5rem 1rem;
+  }
+  .ctparent {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 }
