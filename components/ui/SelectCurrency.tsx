@@ -1,11 +1,11 @@
 'use client'
 
 import '../../styles/SelectCurrency.css'
-import { useState } from 'react'
+import { RefObject, useState } from 'react'
 
 type SelectCurrency = {
   title?: string
-  aRef: MutableRefObject<null>
+  aRef: RefObject<HTMLSelectElement>
   eventChange?: any
 }
 
@@ -30,7 +30,7 @@ const fetchCurrency = async () => {
   const data = await response.json()
 }
 
-export default function SelectCurrency ({ title, aRef = null, eventChange } : SelectCurrency) {
+export default function SelectCurrency ({ title, aRef, eventChange } : SelectCurrency) {
   
   const [selectedValue, setSelectedValue] = useState('placeholder')
   const handleCurrencySelect = () => {
