@@ -9,7 +9,8 @@ export default function Chart () {
   const [coin, setCoin] = useState('')
   const handleChange = () => {
     if (coinRef.current) {
-      setCoin(coinRef.current.value)
+      const coinSelect: HTMLSelectElement = coinRef.current
+      setCoin(coinSelect.value)
     }
   }
 
