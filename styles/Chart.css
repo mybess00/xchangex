@@ -8,6 +8,10 @@
     box-shadow: 0 0 15px rgb(149, 53, 228, 0.25);
 }
 
+.container-chart {
+    height: 100%;
+}
+
 @media (max-width: 720px) {
     .ct-chart {
         padding: 1rem .8rem;
@@ -15,5 +19,8 @@
     }
     .ct-chart-title > .ct-selectcurrency {
         margin-top: .4rem;
+    }
+    .container-chart {
+        min-height: 280px;
     }
 }

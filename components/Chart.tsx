@@ -2,21 +2,82 @@
 
 import '../styles/Chart.css'
 import SelectCurrency from "./ui/SelectCurrency"
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, RefObject } from 'react'
+import { createChart, UTCTimestamp } from 'lightweight-charts'
+import { APIResponse, Graph } from '@/app/api/chart/route'
+
+type DataGraph = {
+  time: UTCTimestamp ,
+  value: number,
+}
+
+const GRAPH_OPTIONS = {
+  UPDATE: 'update',
+  CREATE: 'create'
+}
 
 export default function Chart () {
   const coinRef = useRef(null)
+  const containerChartRef : RefObject<HTMLDivElement> = useRef(null)
   const [coin, setCoin] = useState('')
   const handleChange = () => {
     if (coinRef.current) {
       const coinSelect: HTMLSelectElement = coinRef.current
+      console.log(coinSelect.value)
       setCoin(coinSelect.value)
     }
   }
 
+  const fetchDataGraph = async () => {
+    const response = await fetch('api/chart', {
+      method: 'POST',
+      headers: { 'Content-Type' : 'application/json' },
+      body: JSON.stringify({
+        'coin': coin
+      })
+    })
+    if (!response.ok) {
+      console.log(response)
+      throw new Error('Error 008: POST on components/Chart.tsx')
+    }
+    const res : APIResponse = await response.json()
+    return res
+  }
+
   useEffect(() => {
-    // Cambiar grafico
-    console.log(coin)
+    if (containerChartRef.current && coin !== 'placeholder' && coin !== '') {
+      containerChartRef.current.innerHTML = ''
+      const chart = createChart(containerChartRef.current)
+      const areaSeries = chart.addAreaSeries({
+        topColor: 'rgba(33, 150, 243, 0.56)',
+        bottomColor: 'rgba(33, 150, 243, 0.04)',
+        lineColor: 'rgba(33, 150, 243, 1)',
+        lineWidth: 2,
+      });
+      const dataGraph : DataGraph[] = [] 
+      const createGraph = async () => {
+        const data = await fetchDataGraph()
+        if (data.graph.length > 10) {
+          const dataLenght =  data.graph.length
+          for(let i = 1; i<=10; i++){
+            let newIndex = Math.floor(dataLenght/10*i)
+            if (i == 10) {
+              newIndex--
+            }
+            const value = data.graph[newIndex].price
+            const time = new Date(data.graph[newIndex].date).getTime()/1000 as UTCTimestamp
+            dataGraph.push({value, time})
+          }
+        } else {
+          
+        }
+      }
+      createGraph()
+
+      console.log(dataGraph)
+      areaSeries.setData([...dataGraph])
+      chart.timeScale().fitContent();
+    }  
   }, [coin])
 
   return (
@@ -25,7 +86,9 @@ export default function Chart () {
         <h2>Coin Price Over Time</h2>
         <SelectCurrency aRef={coinRef} eventChange={handleChange}/>
       </div>
-      {/*Grafico buscar api que grafique*/}
+      <div ref={containerChartRef} className='container-chart'>
+        
+      </div>
     </section>
   )
 }
