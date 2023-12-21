@@ -4,7 +4,7 @@ import '../styles/Chart.css'
 import SelectCurrency from "./ui/SelectCurrency"
 import { useRef, useEffect, useState, RefObject } from 'react'
 import { createChart, UTCTimestamp } from 'lightweight-charts'
-import { APIResponse, Graph } from '@/app/api/chart/route'
+import { ApiResponse } from '@/app/api/chart/route'
 
 type DataGraph = {
   time: UTCTimestamp ,
@@ -40,7 +40,7 @@ export default function Chart () {
       console.log(response)
       throw new Error('Error 008: POST on components/Chart.tsx')
     }
-    const res : APIResponse = await response.json()
+    const res : ApiResponse = await response.json()
     return res
   }
 
@@ -57,26 +57,30 @@ export default function Chart () {
       const dataGraph : DataGraph[] = [] 
       const createGraph = async () => {
         const data = await fetchDataGraph()
-        if (data.graph.length > 10) {
+        const dataLimit = 20
+        if (data.graph.length > dataLimit) {
           const dataLenght =  data.graph.length
-          for(let i = 1; i<=10; i++){
-            let newIndex = Math.floor(dataLenght/10*i)
-            if (i == 10) {
+          for(let i = 1; i<=dataLimit; i++){
+            let newIndex = Math.floor(dataLenght/dataLimit*i)
+            if (i == dataLimit) {
               newIndex--
             }
             const value = data.graph[newIndex].price
             const time = new Date(data.graph[newIndex].date).getTime()/1000 as UTCTimestamp
-            dataGraph.push({value, time})
+            dataGraph.push({time, value})
           }
         } else {
-          
+          data.graph.forEach(({price, date}) => {
+            const value = price
+            const time = new Date(date).getTime()/1000 as UTCTimestamp
+            dataGraph.push({time, value})
+          })
         }
       }
-      createGraph()
-
-      console.log(dataGraph)
-      areaSeries.setData([...dataGraph])
-      chart.timeScale().fitContent();
+      createGraph().then(() => {
+        areaSeries.setData(dataGraph)
+        chart.timeScale().fitContent();
+      })
     }  
   }, [coin])
 
@@ -84,6 +88,7 @@ export default function Chart () {
     <section className="ct-chart">
       <div className='ct-chart-title'>
         <h2>Coin Price Over Time</h2>
+        <p>All data from the selected currency is aginst USD. In case of USD is against EUR. For MLC is against CUP.</p>
         <SelectCurrency aRef={coinRef} eventChange={handleChange}/>
       </div>
       <div ref={containerChartRef} className='container-chart'>

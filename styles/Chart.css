@@ -7,9 +7,12 @@
     border-radius: 10px;
     box-shadow: 0 0 15px rgb(149, 53, 228, 0.25);
 }
-
 .container-chart {
     height: 100%;
+}
+.ct-chart-title > p {
+    margin-top: .4rem;
+    font-size: .9rem;
 }
 
 @media (max-width: 720px) {

@@ -81,12 +81,13 @@
     cursor: pointer;
     transition: all 200ms;
 }
+.ct-title > p {
+    font-size: .9rem;
+    margin-top: .4rem;
+}
 @media (max-width: 720px) {
     .ct-main {
         padding: 1rem .8rem;
-    }
-    .ct-title > p {
-        margin-top: .4rem;
     }
 }
 @media (min-width: 721px) {
