@@ -5,6 +5,7 @@ import SelectCurrency from "./ui/SelectCurrency"
 import { useRef, useEffect, useState, RefObject } from 'react'
 import { createChart, UTCTimestamp } from 'lightweight-charts'
 import { ApiResponse } from '@/app/api/chart/route'
+import { CHART_CURRENCIES } from './ui/SelectCurrency'
 
 type DataGraph = {
   time: UTCTimestamp ,
@@ -89,7 +90,7 @@ export default function Chart () {
       <div className='ct-chart-title'>
         <h2>Coin Price Over Time</h2>
         <p>All data from the selected currency is aginst USD. In case of USD is against EUR. For MLC is against CUP.</p>
-        <SelectCurrency aRef={coinRef} eventChange={handleChange}/>
+        <SelectCurrency aRef={coinRef} eventChange={handleChange} currencyPack={CHART_CURRENCIES}/>
       </div>
       <div ref={containerChartRef} className='container-chart'>
         
