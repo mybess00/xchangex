@@ -6,7 +6,7 @@ export default function Footer() {
   const [themeDark, setThemeDark] = useState(window.matchMedia('(prefers-color-scheme:dark)').matches) 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme:dark)')
-    const updateTheme = (e: MediaQueryList) => {
+    const updateTheme = (e: MediaQueryListEvent) => {
       setThemeDark(e.matches)
     }
     mediaQuery.addEventListener('change', updateTheme)
