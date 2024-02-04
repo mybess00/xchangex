@@ -14,7 +14,6 @@
     margin-top: .4rem;
     font-size: .9rem;
 }
-
 @media (max-width: 720px) {
     .ct-chart {
         padding: 1rem .8rem;
@@ -25,5 +24,11 @@
     }
     .container-chart {
         min-height: 280px;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    .ct-chart {
+        background-color: #212121;
+        box-shadow: 0 0 15px rgb(196, 124, 255, 0.34);
     }
 }

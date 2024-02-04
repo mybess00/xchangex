@@ -89,3 +89,11 @@ header {
         max-height: 5%;
     }
 }
+@media (prefers-color-scheme: dark) {
+    header {
+        background-color: #212121;
+    }
+    .ct-header-link {
+        background-color: #212121;
+    }
+}

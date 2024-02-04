@@ -59,3 +59,12 @@
         display: none;
     }
 }
+@media (prefers-color-scheme: dark) {
+    .ct-footer {
+        background-color: #212121;
+    }
+    .ct-footer-final {
+        background-color: #212121;
+        color: white;
+    }
+}
