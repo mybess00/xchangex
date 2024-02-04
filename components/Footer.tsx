@@ -3,7 +3,7 @@ import '../styles/Footer.css'
 import { useEffect, useState } from 'react'
 
 export default function Footer() {
-  const [themeDark, setThemeDark] = useState(window.matchMedia('(prefers-color-scheme:dark)').matches) 
+  const [themeDark, setThemeDark] = useState(false) 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme:dark)')
     const updateTheme = (e: MediaQueryListEvent) => {
