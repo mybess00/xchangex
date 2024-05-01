@@ -1,0 +1,111 @@
+.ct-main {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    background-color: white;
+    padding: 2rem 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgb(149, 53, 228, 0.25);
+}
+.ct-amount {
+    margin-top: 1.5rem;
+}
+.ct-amount > input {
+    margin-top: .3rem;
+    width: 100%;
+    border: none;
+    background-color: #eaeaea;
+    padding: .5rem;
+    border-radius: 5px;
+    font-weight: 600;
+    box-shadow: 0 0 0 2px grey;
+    transition: all 150ms;
+}
+.ct-amount > input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #5f169b;
+}
+.ct-currencies {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-top: .5rem;
+    gap: 1rem;
+}
+.ct-result {
+    margin-top: 1rem;
+}
+.ct-result-span {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    width: 100%;
+    min-height: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 0 0 2px grey;
+    font-weight: 600;
+    margin-top: .3rem;
+    transition: all 400ms;
+}
+.ct-rate {
+    font-size: .85rem;
+    margin: .7rem 0 0 .7rem;
+}
+.ct-btn-calculate {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: .4rem;
+}
+.btn-calculate {
+    margin-top: .5rem;
+    padding: .5rem 2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #9535e4;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 200ms;
+}
+.btn-change {
+    margin-top: .5rem;
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #1ca510;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 200ms;
+}
+.ct-title > p {
+    font-size: .9rem;
+    margin-top: .4rem;
+}
+@media (max-width: 720px) {
+    .ct-main {
+        padding: 1rem .8rem;
+    }
+}
+@media (min-width: 721px) {
+    .btn-calculate:hover {
+        background-color: #5f169b;
+        transform: scale(1.05);
+    }
+    .btn-change:hover {
+        background-color: #0e6307;
+        transform: scale(1.05);
+    }
+}
+@media (prefers-color-scheme: dark) {
+    .ct-main {
+        background-color: #212121;
+        box-shadow: 0 0 15px rgb(196, 124, 255, 0.34);
+    }
+    .ct-amount > input {
+        color: black;
+    }
+}

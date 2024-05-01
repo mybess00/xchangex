@@ -1,0 +1,51 @@
+.ct-currency {
+    display: none;
+    flex-direction: column;
+    gap: .2rem;
+    background-color: white;
+    padding: 2rem 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgb(149, 53, 228, 0.25);
+}
+.ct-currency-select {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.ct-currency-result {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.rate-detail {
+    display: flex;
+    gap: 5px;
+    margin: .5rem 0;
+}
+.rate-detail > p {
+    font-weight: 600;
+}
+.ct-price-detail {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: .3rem;
+}
+.price-detail {
+    display: flex;
+    gap: 5px;
+    font-size: .9rem;
+}
+
+@media (max-width: 720px) {
+    .ct-currency {
+        padding: 1rem .8rem;
+        margin-top: 2rem;
+    }
+    .ct-price-detail {
+        gap: .5rem;
+    }
+}

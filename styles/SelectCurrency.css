@@ -1,0 +1,25 @@
+.ct-selectcurrency {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    min-width: 45%;
+}
+.ct-selectcurrency > select {
+    margin-top: .3rem;
+    width: 100%;
+    border: none;
+    background-color: #eaeaea;
+    padding: .3rem;
+    border-radius: 5px;
+    font-weight: 600;
+    box-shadow: 0 0 0 2px grey;
+    transition: all 150ms;
+}
+.ct-selectcurrency > select:focus {
+    box-shadow: 0 0 0 3px #5f169b;
+}
+@media (prefers-color-scheme: dark) {
+    .ct-selectcurrency > select  {
+        color: black;
+    }
+}
