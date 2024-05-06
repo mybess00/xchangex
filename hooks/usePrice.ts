@@ -167,6 +167,18 @@ export function usePrice () {
       return data.data
     }
   }
+  
+  const market = async () => {
+    const response = await fetch('api/market', {
+      method: "GET",
+      next: {revalidate: 28800}
+    })
+    if (!response.ok) {
+      return null
+    }
+    const data = await response.json()
+    return data
+  }
 
-  return { get, convert }
+  return { get, convert, market }
 }
