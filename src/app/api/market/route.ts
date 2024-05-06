@@ -23,13 +23,13 @@ tasas: {
 };
 }
 export interface YadioApi {
-    request:   Request;
+    request:   RequestApi;
     result:    number;
     rate:      number;
     timestamp: number;
 }
 
-export interface Request {
+export interface RequestApi {
     amount: number;
     from:   string;
     to:     string;
