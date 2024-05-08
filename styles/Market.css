@@ -67,10 +67,10 @@
         border-color: #404040;
     }
     .mk-th-first {
-        color: #737373;
+        color: #c5c3c3;
     }
     .mk-th-c-first  {
-        color: e5e5e5;
+        color: #e5e5e5;
     }
 }
 @media (max-width: 720px) {
@@ -78,5 +78,13 @@
         padding: 1rem .8rem;
         margin-top: 2rem;
         max-width: 92vw;
+    }
+    .mk-th-c-first {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .mk-th-first {
+        padding-left: 0;
+        padding-right: 0;
     }
 }

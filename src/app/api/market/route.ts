@@ -22,14 +22,13 @@ tasas: {
     BTC: number;
 };
 }
-export interface YadioApi {
+interface YadioApi {
     request:   RequestApi;
     result:    number;
     rate:      number;
     timestamp: number;
 }
-
-export interface RequestApi {
+interface RequestApi {
     amount: number;
     from:   string;
     to:     string;
@@ -37,8 +36,6 @@ export interface RequestApi {
 
 const BASE_URL = 'https://tasas.eltoque.com/v1/trmi'
 const AUTH_TOKEN = process.env.API_ELTOQUE
-
-
 export async function GET (req: Request) {
     const browser = await chromium.launch(
         { headless: true }
