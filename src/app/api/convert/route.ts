@@ -6,9 +6,7 @@ type BodyRequest = {
     from: string,
     to: string
 }
-export const config = {
-    runtime: 'experimental-edge'
-}
+export const runtime = 'edge'
 export async function POST(req: Request) {
     const body : BodyRequest = await req.json()
     const response = await fetch(`${BASE_URL}/convert/${body.amount}/${body.from}/${body.to}`, {

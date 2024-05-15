@@ -19,9 +19,7 @@ export interface ApiResponse {
 }
 
 const API_KEY = process.env.SERP_API_KEY
-export const config = {
-  runtime: 'experimental-edge'
-}
+export const runtime = 'edge'
 export async function POST (req: Request) {
   const body : BodyRequest = await req.json()
   let pair: string[] = []
