@@ -1,5 +1,3 @@
-import { request } from "http";
-
 interface ElementApi {
   date: string;
   tasas: {
@@ -67,9 +65,9 @@ export function usePrice () {
         return {
           "rate": from === "MLC" ? result / parseFloat(initialAmount) : rate, 
           "request": {
-          amount,
-          from,
-          to,
+            amount,
+            from,
+            to,
           },
           result
         }
@@ -171,7 +169,7 @@ export function usePrice () {
   const market = async () => {
     const response = await fetch('api/market', {
       method: "GET",
-      next: {revalidate: 28800}
+      next: { revalidate: 28800 }
     })
     if (!response.ok) {
       return null

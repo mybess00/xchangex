@@ -12,11 +12,6 @@ type DataGraph = {
   value: number,
 }
 
-const GRAPH_OPTIONS = {
-  UPDATE: 'update',
-  CREATE: 'create'
-}
-
 export default function Chart () {
   const coinRef = useRef(null)
   const containerChartRef : RefObject<HTMLDivElement> = useRef(null)
@@ -24,7 +19,6 @@ export default function Chart () {
   const handleChange = () => {
     if (coinRef.current) {
       const coinSelect: HTMLSelectElement = coinRef.current
-      console.log(coinSelect.value)
       setCoin(coinSelect.value)
     }
   }
@@ -58,18 +52,16 @@ export default function Chart () {
       const dataGraph : DataGraph[] = [] 
       const createGraph = async () => {
         const data = await fetchDataGraph()
-        const dataLimit = 20
+        const dataLimit = 100
         if (data.graph.length > dataLimit) {
-          const dataLenght =  data.graph.length
-          for(let i = 1; i<=dataLimit; i++){
-            let newIndex = Math.floor(dataLenght/dataLimit*i)
-            if (i == dataLimit) {
-              newIndex--
-            }
-            const value = data.graph[newIndex].price
-            const time = new Date(data.graph[newIndex].date).getTime()/1000 as UTCTimestamp
-            dataGraph.push({time, value})
+          const dataLenght = data.graph.length
+          console.log(dataLenght)
+          for(let i = dataLimit-1; i>=0; i--){
+            const value = data.graph[i].price
+            const time = new Date(data.graph[i].date).getTime()/1000 as UTCTimestamp
+            dataGraph[i] = {time, value}
           }
+          console.log(dataGraph)
         } else {
           data.graph.forEach(({price, date}) => {
             const value = price

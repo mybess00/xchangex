@@ -34,14 +34,6 @@ export const CHART_CURRENCIES = {
   USDT: 'USDT: Tether',
 }
 
-const fetchCurrency = async () => {
-  const response = await fetch('/api/currency', { method: 'GET' })
-  if (!response.ok) {
-    throw new Error ('Error 101: fetchCurrency() on components/ui/SelectCurrency.tsx')
-  }
-  const data = await response.json()
-}
-
 export default function SelectCurrency ({ title, aRef, eventChange, currencyPack } : SelectCurrency) {
   
   const [selectedValue, setSelectedValue] = useState('placeholder')
