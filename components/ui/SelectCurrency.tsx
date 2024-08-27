@@ -19,8 +19,6 @@ export const CURRENCIES = {
   BRL: 'BRL: Real brasileño',
   MXN: 'MXN: Peso mexicano',
   BTC: 'BTC: Bitcoin',
-  ETH: 'ETH: Ethereum',
-  USDT: 'USDT: Tether',
 }
 
 export const CHART_CURRENCIES = {
@@ -30,8 +28,6 @@ export const CHART_CURRENCIES = {
   BRL: 'BRL: Real brasileño',
   MXN: 'MXN: Peso mexicano',
   BTC: 'BTC: Bitcoin',
-  ETH: 'ETH: Ethereum',
-  USDT: 'USDT: Tether',
 }
 
 const fetchCurrency = async () => {
